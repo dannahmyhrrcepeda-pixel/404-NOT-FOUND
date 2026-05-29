@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantuyong OneServe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="chat-card">
+    <header>
+        <div class="header-content">
+            <div class="logo-circle">
+                <img src="c:\Users\breat\OneDrive\Documents\Barangay_RAG\logo.jpg" alt="Logo" id="brgy-logo">
+            </div>
+            <div class="header-text">
+                <h1>Mantuyong OneServe</h1>
+                <p>Virtual Assistant of Barangay Mantuyong</p>
+            </div>
+        </div>
+    </header>
+    <div id="chat-window">
+        <div class="msg bot">Maayong adlaw! I am your 24/7 Virtual Assistant. How can I assist you today?</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendMessage()">
+        <button id="send-btn">SEND</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

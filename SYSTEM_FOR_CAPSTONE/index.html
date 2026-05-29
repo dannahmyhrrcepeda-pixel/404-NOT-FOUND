@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Mantuyong | OneServe CMBS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A2463',
+                        secondary: '#3E92CC',
+                        accent: '#D83E29',
+                        success: '#22C55E',
+                        pending: '#F59E0B',
+                        notseen: '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body >
+
+    <!-- AUTH SECTION -->
+    <section id="authSection" class="min-h-screen flex flex-col items-center justify-center bg-white/80 p-4">
+        <div class="text-center mb-8">
+            <!-- ✅ BIGGER LOGO -->
+            <img src="mantuyong_logo.png" alt="Seal" class="w-32 h-32 mx-auto mb-3">
+            <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-extrabold text-primary">BARANGAY MANTUYONG</h1>
+            <p class="text-gray-600 font-semibold">ONESERVE CMBS</p>
+            <p id="userTypeLabel" class="text-sm text-secondary mt-1">RESIDENT PORTAL</p>
+        </div>
+
+        <div class="w-full max-w-lg overflow-hidden rounded-xl shadow-xl bg-white border">
+            <div id="authSwipeWrapper" class="swipe-wrapper flex transition-transform duration-500 ease-in-out">
+                
+                <!-- LOGIN SLIDE -->
+                <div class="swipe-slide w-full shrink-0 p-6">
+                    <h2 class="text-2xl font-bold text-center text-primary mb-6">Log In</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Username / Email</label>
+                            <input type="text" id="loginUser" class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none transition" placeholder="Enter your username">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="loginPass" class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none transition" placeholder="Enter password">
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <label class="flex items-center gap-2"><input type="checkbox"> Remember me</label>
+                            <a href="#" class="text-secondary hover:underline">Forgot Password?</a>
+                        </div>
+                        <button onclick="enterSystem()" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg transition">LOGIN</button>
+                    </div>
+                    <p class="text-center text-sm mt-6 text-gray-600">
+                        Don't have an account? 
+                        <button onclick="swipeAuthRight()" class="text-secondary font-bold hover:underline">Swipe Right to Sign Up →</button>
+                    </p>
+                </div>
+
+                <!-- SIGN UP SLIDE -->
+                <div class="swipe-slide w-full shrink-0 p-6 bg-gray-50">
+                    <h2 class="text-2xl font-bold text-center text-primary mb-4">Sign Up</h2>
+                    <p class="text-xs text-center text-gray-500 mb-6">Please provide your official details as they appear on your government-issued identification cards.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="text-sm font-medium">First Name</label>
+                                <input type="text" id="regFname" class="w-full border rounded px-3 py-2" placeholder="e.g. Alexander">
+                            </div>
+                            <div>
+                                <label class="text-sm font-medium">Middle Name</label>
+                                <input type="text" id="regMname" class="w-full border rounded px-3 py-2" placeholder="e.g. Sterling">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium">Last Name</label>
+                            <input type="text" id="regLname" class="w-full border rounded px-3 py-2" placeholder="e.g. Montgomery">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium">Date of Birth</label>
+                            <input type="text" id="regDob" class="w-full border rounded px-3 py-2" placeholder="MM/DD/YYYY">
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium">Sex</label>
+                            <select id="regSex" class="w-full border rounded px-3 py-2">
+                                <option>Select option</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium">Contact Number</label>
+                            <div class="flex">
+                                <span class="inline-flex items-center px-3 border border-r-0 rounded-l bg-gray-100 text-gray-600">+63</span>
+                                <input type="text" id="regContact" class="flex-1 border rounded-r px-3 py-2" placeholder="917 123 4567">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-sm font-medium">Purok / Zone</label>
+                            <select id="regPurok" class="w-full border rounded px-3 py-2">
+                                <option>Select location</option>
+                                <option>Purok 1</option>
+                                <option>Purok 2</option>
+                                <option>Purok 3</option>
+                                <option>Purok 4</option>
+                                <option>Purok 5</option>
+                                <option>Purok 6</option>
+                                <option>Purok 7</option>
+                                <option>Purok 8</option>
+                                <option>Purok 9</option>
+                                <option>Purok 10</option>
+                                <option>Purok 11</option>
+                                <option>Purok 12</option>
+                                <option>Purok 13</option>
+                                <option>Purok 14</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                            <label class="text-sm font-semibold text-primary">Identity Documentation (ID)</label>
+                            <div class="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-secondary transition cursor-pointer">
+                                <i class="fa fa-cloud-upload text-3xl text-gray-400 mb-2"></i>
+                                <p class="text-sm text-gray-600">Tap to upload ID photo</p>
+                                <p class="text-[10px] text-gray-500">Max size 5MB. PNG, JPG, or PDF.</p>
+                            </div>
+                            <div class="mt-2 text-xs text-gray-600 flex items-start gap-2">
+                                <i class="fa fa-shield text-secondary mt-0.5"></i>
+                                <span>Your data is encrypted using AES-256 standards. Only authorized civil personnel can access this information for verification purposes.</span>
+                            </div>
+                        </div>
+
+                        <button onclick="saveRegistration()" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg mt-2">SUBMIT <i class="fa fa-arrow-right ml-1"></i></button>
+                    </div>
+
+                    <p class="text-center text-sm mt-4 text-gray-600">
+                        Already registered? 
+                        <button onclick="swipeAuthLeft()" class="text-secondary font-bold hover:underline">← Swipe Left to Sign In</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD MAIN PAGE -->
+    <section id="dashboardPage" class="hidden bg-blur-bg pb-10">
+        <div class="bg-primary text-white px-4 py-3 flex justify-between items-center shadow-md">
+            <button onclick="openChatAI()" class="flex items-center gap-2 hover:text-gray-200 transition">
+                <i class="fa fa-android text-xl"></i>
+                <span class="text-sm font-medium hidden sm:inline">AI Assistant</span>
+            </button>
+            
+            <h2 class="font-bold text-lg">ONESERVE CMBS</h2>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="openProfile()" class="hover:text-gray-200 transition"><i class="fa fa-users text-xl"></i></button>
+                <button onclick="toggleMainMenu()" class="hover:text-gray-200 transition"><i class="fa fa-bars text-xl"></i></button>
+            </div>
+        </div>
+
+        <!-- MAIN MENU DROPDOWN -->
+        <div id="mainMenuDropdown" class="hidden absolute right-4 top-14 w-48 bg-white rounded-lg shadow-xl z-50 overflow-hidden border border-gray-100">
+            <ul class="text-gray-700 text-sm">
+                <li><button onclick="openAbout()" class="w-full text-left px-4 py-3 hover:bg-gray-100 transition"><i class="fa fa-info-circle mr-2"></i> ABOUT</button></li>
+                <li><button onclick="openContact()" class="w-full text-left px-4 py-3 hover:bg-gray-100 transition"><i class="fa fa-phone mr-2"></i> CONTACT</button></li>
+                <li><button onclick="openSettings()" class="w-full text-left px-4 py-3 hover:bg-gray-100 transition"><i class="fa fa-cog mr-2"></i> SETTINGS</button></li>
+                <li class="border-t mt-1"><button onclick="logout()" class="w-full text-left px-4 py-3 text-accent hover:bg-red-50 transition"><i class="fa fa-sign-out mr-2"></i> LOGOUT</button></li>
+            </ul>
+        </div>
+        <!-- CENTER LOGO BUTTON -->
+        <div class="flex flex-col items-center justify-center py-10 px-4">
+            <!-- ✅ BIGGER LOGO -->
+            <button onclick="goToOfficialsPage()" class="transform transition hover:scale-105 focus:scale-95">
+                <img src="mantuyong_logo.png" alt="Barangay Seal" class="w-48 h-48 rounded-full shadow-lg border-4 border-white">
+            </button>
+            <p class="mt-3 text-gray-700 font-semibold text-lg">BARANGAY MANTUYONG</p>
+        </div>
+
+        <!-- MAIN GRID BUTTONS ✅ SMALL BUTTONS -->
+        <div class="grid grid-cols-3 gap-3 px-4 max-w-md mx-auto">
+            <button onclick="openGrievance()" class="bg-primary text-white rounded-xl btn-small font-bold shadow-md hover:shadow-lg hover:bg-primary/90 transition transform hover:-translate-y-1">
+                GRIEVANCE
+            </button>
+            <button onclick="openBulletin()" class="bg-primary text-white rounded-xl btn-small font-bold shadow-md hover:shadow-lg hover:bg-primary/90 transition transform hover:-translate-y-1">
+                BARANGAY BULLETIN
+            </button>
+            <button onclick="openAppointment()" class="bg-primary text-white rounded-xl btn-small font-bold shadow-md hover:shadow-lg hover:bg-primary/90 transition transform hover:-translate-y-1">
+                APPOINTMENT
+            </button>
+        </div>
+    </section>
+
+    <!-- OFFICIALS PAGE -->
+    <section id="officialsPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline">
+            <i class="fa fa-arrow-left"></i> BACK
+        </button>
+
+        <div class="flex justify-center gap-3 mb-6">
+            <button onclick="showOfficialList('brgy')" id="btnBrgyOff" class="px-5 py-2 rounded-t-lg font-semibold bg-primary text-white">Barangay Officials</button>
+            <button onclick="showOfficialList('sk')" id="btnSkOff" class="px-5 py-2 rounded-t-lg font-semibold bg-gray-200 text-gray-700">Sangguniang Kabataan</button>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg p-4 border max-w-2xl mx-auto">
+            <div id="officialsContent" class="space-y-4 max-h-[500px] overflow-y-auto scrollbar-hide">
+                <!-- Content loaded by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GRIEVANCE PAGE ✅ RESIDENTS CAN POST, ALL CAN COMMENT UNLIMITED -->
+    <section id="grievancePage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline">
+            <i class="fa fa-arrow-left"></i> BACK
+        </button>
+
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">Grievance & Reports</h2>
+            <button onclick="openNewComplaintModal()" class="bg-accent text-white px-4 py-2 rounded-lg font-medium hover:bg-accent/90 transition">
+                + NEW COMPLAINT
+            </button>
+        </div>
+
+        <!-- COMPLAINT ITEMS DYNAMICALLY ADDED -->
+        <div id="complaintsContainer">
+            <div class="bg-white rounded-xl shadow-md p-4 mb-4 border">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="font-bold text-gray-800" onclick="openProfileView('Annabel P. Mitso', 58, 'Female', 'Purok 4', '0978775562')">Annabel P. Mitso</span>
+                        <p class="text-xs text-gray-500">Block 14 • Posted <span class="time-ago" data-timestamp="2026-05-23T08:44:00">0 hours 0 minutes 0 seconds ago</span></p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold status-notseen bg-notseen/10 text-notseen">NOT YET SEEN</span>
+                </div>
+                
+                <p class="text-gray-700 my-3">Kani na Area dapita kay daghan kaayu basura please ug papalimpyuhi kay dilekado sa dingue</p>
+                
+                <div class="flex justify-between items-center">
+                    <button onclick="toggleComments(this)" class="text-sm text-primary font-medium hover:underline">
+                        <i class="fa fa-comment-o mr-1"></i> View Comments
+                    </button>
+                    <div class="admin-only hidden">
+                        <select onchange="changeStatus(this, this.parentElement.parentElement.parentElement.querySelector('.status-badge'))" class="text-xs border rounded px-2 py-1">
+                            <option value="notseen" selected>Mark: NOT YET SEEN</option>
+                            <option value="pending">Mark: PENDING</option>
+                            <option value="done">Mark: DONE</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ✅ UNLIMITED COMMENTS -->
+                <div class="comments-section hidden mt-3 pt-3 border-t border-gray-100">
+                    <div class="comments-list space-y-2 mb-3">
+                        <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs font-semibold">Resident User:</p>
+                            <p class="text-sm">Salamat sa report, makita jud kaayo.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Add a public comment..." class="new-comment-input flex-1 text-sm border rounded px-3 py-2">
+                        <button onclick="addComment(this)" class="bg-primary text-white px-3 py-1 rounded">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BARANGAY BULLETIN PAGE ✅ ONLY ADMIN CAN POST, ALL CAN COMMENT -->
+    <section id="bulletinPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline">
+            <i class="fa fa-arrow-left"></i> BACK
+        </button>
+
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-primary">Barangay Bulletin</h2>
+            <button onclick="openNewBulletinModal()" class="bg-accent text-white px-4 py-2 rounded-lg font-medium hover:bg-accent/90transition admin-only hidden">
+                + NEW UPDATE
+            </button>
+        </div>
+
+        <div id="bulletinContainer">
+            <div class="bg-white rounded-xl shadow-md p-4 mb-4 border">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="font-bold text-lg text-gray-800">Monthly Clean-Up Drive Announcement</span>
+                        <p class="text-xs text-gray-500">Posted <span class="time-ago" data-timestamp="2026-05-22T10:30:00">1 hours 15 minutes 2 seconds ago</span></p>
+                    </div>
+                    <div class="text-yellow-500">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+                
+                <p class="text-gray-700 my-2">Join us this Saturday (February 14) at 7:00 AM for a barangay-wide clean-up drive. Meet at the covered court!</p>
+                <img src="https://picsum.photos/id/101/600/200" class="w-full h-32 object-cover rounded-lg my-3">
+                
+                <button onclick="toggleComments(this)" class="text-sm text-primary font-medium hover:underline mb-3">
+                    <i class="fa fa-comment-o mr-1"></i> View Comments
+                </button>
+
+                <!-- ✅ UNLIMITED COMMENTS -->
+                <div class="comments-section pt-3 border-t border-gray-100">
+                    <div class="comments-list space-y-2 mb-3">
+                        <div class="bg-gray-50 p-2 rounded-lg">
+                            <p class="text-xs font-semibold">Resident:</p>
+                            <p class="text-sm">Will bring my whole family! Great to hear—see you there!</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Add a public comment..." class="new-comment-input flex-1 text-sm border rounded px-3 py-2">
+                        <button onclick="addComment(this)" class="bg-primary text-white px-3 py-1 rounded">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPOINTMENT PAGE -->
+    <section id="appointmentPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline">
+            <i class="fa fa-arrow-left"></i> BACK
+        </button>
+
+        <div class="max-w-lg mx-auto bg-white rounded-xl shadow-lg p-6 border-t-4 border-green-700">
+            <h2 class="text-2xl font-bold text-center text-green-800 mb-6">BOOK YOUR APPOINTMENT</h2>
+            
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                    <input type="text" placeholder="Last Name, First Name, Middle Name" class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Complete Address *</label>
+                    <input type="text" placeholder="Purok / Street / Zone, Barangay Mantuyong" class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact Number *</label>
+                    <input type="text" placeholder="09XX XXX XXXX" class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Service Requested *</label>
+                    <select class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 bg-transparent outline-none transition">
+                        <option>-- Select Service --</option>
+                        <option>Barangay Clearance</option>
+                        <option>Certificate of Residency</option>
+                        <option>Certificate of Indigency</option>
+                        <option>Business Permit Endorsement</option>
+                        <option>Certificate of Good Moral Character</option>
+                        <option>Financial Assistance Request</option>
+                        <option>Others (specify below)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Appointment Date *</label>
+                    <input type="date" class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 outline-none transition">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Appointment Time *</label>
+                    <select class="w-full border-b-2 border-gray-200 focus:border-green-600 px-2 py-2 bg-transparent outline-none transition">
+                        <option>-- Select Time --</option>
+                        <option>08:00 AM - 09:00 AM</option>
+                        <option>09:00 AM - 10:00 AM</option>
+                        <option>10:00 AM - 11:00 AM</option>
+                        <option>11:00 AM - 12:00 PM</option>
+                        <option>01:00 PM - 02:00 PM</option>
+                        <option>02:00 PM - 03:00 PM</option>
+                        <option>03:00 PM - 04:00 PM</option>
+                        <option>04:00 PM - 05:00 PM</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Purpose / Remarks</label>
+                    <textarea placeholder="Briefly state the purpose of your request" rows="3" class="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-green-600 outline-none transition"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white py-3 rounded-lg font-semibold shadow-md transition mt-4">
+                    <i class="fa fa-paper-plane mr-2"></i> SUBMIT APPOINTMENT
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- PROFILE VIEW PAGE ✅ SHOWS ONLY MY POSTS -->
+    <section id="profilePage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline">
+            <i class="fa fa-arrow-left"></i> BACK
+        </button>
+
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6 border">
+            <div class="text-center mb-4">
+                <img id="profileImg" src="https://i.pravatar.cc/150?u=resident" class="w-24 h-24 rounded-full mx-auto mb-3 border-4 border-secondary">
+                <h2 id="profileName" class="text-xl font-bold text-primary"></h2>
+            </div>
+            
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Age:</span><span id="profileAge">67</span></div>
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Sex:</span><span id="profileSex">Female<span></div>
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Residing:</span><span>20 Years</span></div>
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Purok / Block:</span><span id="profilePurok">6</span></div>
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Block Leader:</span><span>Fiaciole B. Nunez</span></div>
+                <div class="flex justify-between border-b pb-2"><span class="font-medium">Contact No:</span><span id="profileContact" class="text-secondary font-mono">009876655</span></div>
+            </div>
+
+            <div class="mt-6">
+                <h3 class="font-bold text-lg mb-2">My Complaints & Posts</h3>
+                <div id="myComplaints" class="bg-gray-50 p-3 rounded-lg border">
+                    <!-- Only posts made by current user appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI CHATBOT PAGE -->
+    <section id="chatAIPage" class="hidden fixed inset-0 bg-white z-50 flex flex-col">
+        <div class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 flex items-center justify-between shadow-md">
+            <button onclick="goBack('dashboardPage')" class="hover:text-gray-200"><i class="fa fa-arrow-left text-xl"></i></button>
+            <div class="flex items-center gap-3">
+                <img src="mantuyong_logo.png" class="w-10 h-10 rounded-full border-2 border-white">
+                <div>
+                    <h3 class="font-bold">MANTUYONG AI ASSISTANT</h3>
+                    <p class="text-xs text-blue-100">Online • 24/7</p>
+                </div>
+            </div>
+            <div></div>
+        </div>
+
+        <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+            <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center text-xs mt-1">AI</div>
+                <div class="bg-blue-50 p-3 rounded-lg rounded-tl-none max-w-[80%] border-l-4 border-secondary text-sm">
+                    Maayong adlaw! I am MBSmart, your 24/7 Virtual Assistant. I can help you with Barangay Clearances, Indigency Certificates, and local inquiries. How can I help you today?
+                </div>
+            </div>
+        </div>
+
+        <div class="px-4 py-2 bg-gray-50 border-t border-b overflow-x-auto whitespace-nowrap scrollbar-hide">
+            <span class="text-xs font-semibold text-gray-500 mr-2">Quick Qs:</span>
+            <button onclick="insertQuestion(this.textContent)" class="text-xs bg-white border rounded-full px-3 py-1 mr-2 hover:bg-gray-100">What documents do I need for barangay clearance?</button>
+            <button onclick="insertQuestion(this.textContent)" class="text-xs bg-white border rounded-full px-3 py-1 mr-2 hover:bg-gray-100">How to file complaint?</button>
+            <button onclick="insertQuestion(this.textContent)" class="text-xs bg-white border rounded-full px-3 py-1 mr-2 hover:bg-gray-100">Who is the captain?</button>
+        </div>
+
+        <div class="p-4 bg-white flex gap-2 items-center">
+            <input id="aiInput" type="text" placeholder="Type your message here..." class="flex-1 border rounded-full px-4 py-3 focus:ring-2 focus:ring-secondary/40 outline-none">
+            <button onclick="sendAIMessage()" class="bg-accent hover:bg-accent/90 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                <i class="fa fa-paper-plane"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ABOUT, CONTACT, SETTINGS PAGES -->
+    <section id="aboutPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline"><i class="fa fa-arrow-left"></i> BACK</button>
+        <div class="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 border">
+            <div class="text-center mb-6"><img src="mantuyong_logo.png" class="w-16 h-16 mx-auto mb-2"><h2 class="text-2xl font-bold text-primary">ABOUT BARANGAY MANTUYONG</h2></div>
+            <div class="space-y-4 text-sm leading-relaxed">
+                <p><strong>Barangay Mantuyong</strong> is an official barangay under Mandaue City, Cebu, part of Metro Cebu in Central Visayas, Philippines.</p>
+                <p><strong>Location:</strong> Eastern part of Mandaue City, near Cebu City boundaries. Postal code: 6014.</p>
+                <p><strong>Population:</strong> ~5,487 residents (2020 census).</p>
+                <p><strong>Type:</strong> Urban barangay, residential & mixed-use.</p>
+                <p><strong>Services:</strong> Issues clearances, certificates, permits, manages peace & order, community programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contactPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline"><i class="fa fa-arrow-left"></i> BACK</button>
+        <div class="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-6 border text-center">
+            <img src="mantuyong_logo.png" class="w-16 h-16 mx-auto mb-4">
+            <h2 class="text-2xl font-bold text-primary mb-6">CONTACT US</h2>
+            <div class="space-y-3 text-lg">
+                <p><i class="fa fa-phone mr-2 text-secondary"></i> +63 (032) 230 4500</p>
+                <p><i class="fa fa-envelope mr-2 text-secondary"></i> cmo@mandauecity.gov.ph</p>
+                <p><i class="fa fa-facebook-square mr-2 text-secondary"></i> Mandaue City Public Affairs Office</p>
+                <div class="mt--6 p-4 bg-blue-50 rounded-lg text-sm">
+                    <p><strong>Office Hours:</strong><br>Monday - Friday: 8:00 AM - 5:00 PM<br>Closed Weekends & Holidays</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="settingsPage" class="hidden bg-blur-bg p-4">
+        <button onclick="goBack('dashboardPage')" class="flex items-center gap-2 text-primary font-semibold mb-6 hover:underline"><i class="fa fa-arrow-left"></i> BACK</button>
+        <h2 class="text-2xl font-bold text-center text-primary mb-6">SYSTEM SETTINGS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <div class="bg-white p-4 rounded-lg shadow border hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2"><i class="fa fa-building text-primary text-xl"></i><h4 class="font-semibold">Barangay Profile</h4></div>
+                <p class="text-xs text-gray-600 mb-2">Edit: Name, Address, Contact Info, Officials list</p>
+                <button class="text-xs text-secondary hover:underline admin-only">Edit →</button>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow border hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2"><i class="fa fa-calendar text-primary text-xl"></i><h4 class="font-semibold">Appointment System</h4></div>
+                <p class="text-xs text-gray-600 mb-2">Set: Available dates, Time slots, Daily limits</p>
+                <button class="text-xs text-secondary hover:underline admin-only">Edit →</button>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow border hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2"><i class="fa fa-paint-brush text-primary text-xl"></i><h4 class="font-semibold">Appearance</h4></div>
+                <p class="text-xs text-gray-600 mb-2">Change: Logo, Colors, System Name, About text</p>
+                <button class="text-xs text-secondary hover:underline admin-only">Edit →</button>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow border hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2"><i class="fa fa-shield text-primary text-xl"></i><h4 class="font-semibold">Security & Access</h4></div>
+                <p class="text-xs text-gray-600 mb-2">Password, Permissions, Access Logs, Backup</p>
+                <button class="text-xs text-secondary hover:underline admin-only">Edit →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+    <div id="newComplaintModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg w-full max-w-md p-6 relative">
+            <button onclick="closeModal('newComplaintModal')" class="absolute top-3 right-3 text-gray-500 hover:text-black text-lg"><i class="fa fa-times"></i></button>
+            <h3 class="text-xl font-bold mb-4">Post New Complaint</h3>
+            <div class="space-y-3 mb-4">
+                <div><label class="text-sm font-medium">Title</label><input type="text" id="compTitle" class="w-full border rounded px-3 py-2" placeholder="Enter complaint title"></div>
+                <div><label class="text-sm font-medium">Description</label><textarea id="compDesc" rows="4" class="w-full border rounded px-3 py-2" placeholder="Enter complaint details"></textarea></div>
+                <div><label class="text-sm font-medium">Contact Number (For Confirmation)</label>
+                    <div class="flex">
+                        <span class="inline-flex items-center px-3 border border-r-0 rounded-l bg-gray-100 text-gray-600">+63</span>
+                        <input type="text" id="compContact" class="flex-1 border rounded-r px-3 py-2" placeholder="9XXXXXXXXX">
+                    </div>
+                </div>
+                <div><label class="text-sm font-medium">Image</label><input type="text" id="compImg" class="w-full border rounded px-3 py-2" placeholder="Leave blank for default SVG"></div>
+                <div class="flex gap-2">
+                    <button class="comp-public flex-1 bg-green-600 text-white py-2 rounded">Public</button>
+                    <button class="comp-private flex-1 bg-red-600 text-white py-2 rounded">Private</button>
+                </div>
+            </div>
+            <button onclick="submitComplaint()" class="w-full bg-primary text-white py-2 rounded">Post Complaint</button>
+        </div>
+    </div>
+
+    <div id="newBulletinModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg w-full max-w-md p-6 relative">
+            <button onclick="closeModal('newBulletinModal')" class="absolute top-3 right-3 text-gray-500 hover:text-black text-lg"><i class="fa fa-times"></i></button>
+            <h3 class="text-xl font-bold mb-4">Post New Update</h3>
+            <div class="space-y-3 mb-4">
+                <div><label class="text-sm font-medium">Title</label><input type="text" class="w-full border rounded px-3 py-2" placeholder="Enter update title"></div>
+                <div><label class="text-sm font-medium">Description</label><textarea rows="4" class="w-full border rounded px-3 py-2" placeholder="Enter update details"></textarea></div>
+                <div><label class="text-sm font-medium">Image</label><input type="text" class="w-full border rounded px-3 py-2" placeholder="Leave blank for default SVG"></div>
+            </div>
+            <button class="w-full bg-primary text-white py-2 rounded">Post Update</button>
+        </div>
+    </div>
+
+    <div id="editOfficialModal" class="hidden fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg w-full max-w-md p-6 relative">
+            <button onclick="closeModal('editOfficialModal')" class="absolute top-3 right-3 text-gray-500 hover:text-black text-lg"><i class="fa fa-times"></i></button>
+            <h3 class="text-xl font-bold mb-4">Edit Official Details</h3>
+            <div class="space-y-3 mb-4">
+                <div><label class="text-sm font-medium">Position</label><input type="text" id="editPos" class="w-full border rounded px-3 py-2"></div>
+                <div><label class="text-sm font-medium">Full Name</label><input type="text" id="editName" class="w-full border rounded px-3 py-2"></div>
+                <div><label class="text-sm font-medium">Age</label><input type="text" id="editAge" class="w-full border rounded px-3 py-2"></div>
+                <div><label class="text-sm font-medium">Sex</label><select id="editSex" class="w-full border rounded px-3 py-2"><option>Male</option><option>Female</option></select></div>
+                <div><label class="text-sm font-medium">Photo</label><input type="text" id="editPhoto" class="w-full border rounded px-3 py-2" placeholder="Colored SVG Default"><input type="file" class="mt-1 text-sm" accept="image/*"></div>
+            </div>
+            <button onclick="saveEditOfficial()" class="w-full bg-primary text-white py-2 rounded">Save Changes</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

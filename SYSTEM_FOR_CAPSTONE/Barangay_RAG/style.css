@@ -1,0 +1,127 @@
+:root {
+    --brgy-blue: #0038a8;
+    --brgy-yellow: #fcd116;
+    --brgy-red: #ce1126;
+    --bg-light: #f4f7f6;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.chat-card {
+    width: 400px;
+    height: 650px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border: 2px solid var(--brgy-blue);
+}
+
+/* Updated Header with Logo */
+header {
+    background: var(--brgy-blue);
+    color: white;
+    padding: 15px;
+    border-bottom: 5px solid var(--brgy-yellow);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid var(--brgy-yellow);
+}
+
+#brgy-logo {
+    width: 85%;
+    height: auto;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.header-text p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #e0e0e0;
+}
+
+#chat-window {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.bot {
+    background: #e3f2fd;
+    color: #0d47a1;
+    align-self: flex-start;
+    border-left: 4px solid var(--brgy-red);
+}
+
+.user {
+    background: var(--brgy-blue);
+    color: white;
+    align-self: flex-end;
+}
+
+.input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+}
+
+button {
+    background: var(--brgy-red);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    margin-left: 10px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
